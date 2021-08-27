@@ -19,7 +19,7 @@
 </div>
 <div class="row">
     <div class="col-md-4"><h2>You've got<span class="no-of-tasks"> 4</span> tasks</h2></div>
-    <div class="col-md-4"><button type="submit" class="mx-auto button2"><i class="fa fa-plus-square" aria-hidden="true"></i>Add New</button></div>
+    <div class="col-md-4"><button type="submit" class="mx-auto button2" data-toggle="modal" data-target="#loginModal"><i class="fa fa-plus-square" aria-hidden="true"></i>Add New</button></div>
     <div class="col-md-4"> <img src="images/logo.png" alt="responsive image" class="logo-on-tasks"></div>
     
 </div>
@@ -108,6 +108,48 @@
             </div>
             </div>
         </section>
+
+        
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    
+        <div class="d-flex flex-column text-center">
+          <form>
+            <div class="addnew-form">
+              <button type="button" class="close btn-dark" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">x</span>
+              </button>
+            </div>
+            <div class="addnew-form">
+              <input type="text" class="" placeholder="Title" aria-describedby="emailHelp" required>        
+            </div>
+            <div class="addnew-form">
+              <input type="email" class="" placeholder="Assigned to" aria-describedby="emailHelp" required>        
+            </div>
+            <div class="addnew-form">
+              <input type="email" class="" placeholder="Assigned by" aria-describedby="emailHelp">        
+            </div>
+            <div class="addnew-form">
+              <textarea class="" id="message-text" placeholder="Description"></textarea>
+            </div>
+             <div class="addnew-form">
+              <button type="button" class="btn btn-danger">Add Task</button>
+            </div>
+          </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <select class="form-select form-select-sm" aria-label="">
+    <option selected>Status</option>
+    <option value="1">In Progress</option>
+    <option value="2">Pending</option>
+  </select>
+</div>
         <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
 <script src="./js/bootstrap.min.js"></script>
 <!-- jQuery -->

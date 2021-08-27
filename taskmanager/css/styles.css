@@ -26,7 +26,7 @@ form {
     height: auto;
     color: #808080;
     padding: 20px;
-    margin-top: 70px;
+    margin-top: 40px;
     font-size: auto;
     opacity: 0.9;
     }
@@ -88,6 +88,7 @@ form {
 
    .shadow{
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.9);
+    
     }
 
   /*plus icon */
@@ -148,7 +149,36 @@ h2{
     margin-top: 10px;
     float: right;
     }
-    
+
+/* modal form */
+.addnew-form input{
+padding-left: 5px;
+width: 100%;
+margin: 8px 0;
+border-radius: 4px;
+border: 1px solid #808080;
+height: 40px;
+}
+
+.btn-dark{
+    width: 30px;
+    float: right;
+}
+
+.btn-danger{
+    width: 100px;
+    float: right;
+}
+
+.addnew-form textarea{
+    padding-left: 5px;
+width: 100%;
+margin: 8px 0;
+border-radius: 4px;
+border: 1px solid #808080;
+height: 150px;
+}
+
 /*tables*/
 .table-responsive{
     margin-left: 30px;
