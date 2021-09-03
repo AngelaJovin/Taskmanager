@@ -106,6 +106,7 @@ form {
         height: 30px;
         color: white;
         margin-top: 10px;
+        margin-bottom: 5px;
         }
 
    /* user icon in the homepage*/
@@ -240,4 +241,17 @@ height: 150px;
         display: inline-block ;
         text-align: center;
         }
+
+        /*admin tasks page*/
+        .button3{
+            background-color: #ff9ba0;
+            border: none;
+            border-radius: 10px;
+            width: 100px;
+            height: 30px;
+            color: white;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 100px;
+            }
 
