@@ -15,7 +15,7 @@ include('connect.php');
 	    $row=mysqli_num_rows($result);
 
 	    if($row == true) {
-		   header("location: taskmanager.html");
+		   header("location: taskmanager.php");
 		   exit();	  
 	       }
 

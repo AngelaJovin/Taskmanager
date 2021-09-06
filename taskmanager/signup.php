@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
  $result = mysqli_query($conn,$sql);
 
     if($result){   
-      header("location: taskmanager.html");
+      header("location: taskmanager.php");
       exit();
       }
 

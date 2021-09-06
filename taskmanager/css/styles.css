@@ -212,8 +212,8 @@ height: 150px;
 .label-yellow{
     color: #f2994a;
     background-color: #fcebdb;
-    border-radius: 40px;
-    width: 100px;
+    border-radius: 30px;
+    width: auto;
     height: 25px; 
     align-items: center;
     display: inline-block ;
