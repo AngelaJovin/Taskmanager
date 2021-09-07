@@ -213,7 +213,7 @@ height: 150px;
     color: #f2994a;
     background-color: #fcebdb;
     border-radius: 30px;
-    width: auto;
+    width: 200px;
     height: 25px; 
     align-items: center;
     display: inline-block ;
@@ -254,4 +254,10 @@ height: 150px;
             margin-bottom: 5px;
             margin-left: 100px;
             }
+ .edit{
+     color: #ff9ba0;
+ }
 
+ .delete{
+     color: #ff9ba0;
+ }

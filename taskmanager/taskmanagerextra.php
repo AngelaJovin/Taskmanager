@@ -35,38 +35,44 @@
         <div class="table-responsive">
         <table class="table">
             <tbody>
-            <tr>             
+              <div class="accordion accordion-flush">
                 
-            <?php                    
+                      <?php                    
 
-$sql="SELECT  `Title`, `AssignedTo`, `AssignedBy` FROM `tasks` ";
+                      $sql="SELECT  `Title`, `AssignedTo`, `AssignedBy`, `Description` FROM `tasks` ";
 
-$result=$conn->query($sql);
+                      $result=$conn->query($sql);
+                      
+                      if($result->num_rows>0){
+                      
+                          while($row=$result->fetch_assoc()){
+                            extract($row);
 
-if($result->num_rows>0){
+                            ?>
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-heading">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#areacollapse" aria-expanded="false" aria-controls="areacollapse">
+                                <?php echo $row['Title'];?>
+                              <span class="label-yellow mx-auto status"><?php echo $row['AssignedTo'];?></span>
+                                <?php echo $row['AssignedBy']; ?>
+                             <div><a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></div>
+                              </button>
+                            </h2>
+                            <div id="areacollapse" class="accordion-collapse collapse" aria-labelledby="flush-heading">
+                              <div class="accordion-body"><?php echo $row['Description'];?></div>
+                              <button type="submit" class="mx-auto button3">Done</button>
+                            </div>
+                          </div>
 
-    while($row=$result->fetch_assoc()){
-      extract($row);
-
-      ?>
-                   <td> <?php echo $row['Title'];?></td>
-                   <td> <span class="label-yellow mx-auto status"><?php echo $row['AssignedTo'];?></span></td>
-                   <td><?php echo $row['AssignedBy']; ?></td>
-                   <td><a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					   <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				   </td>
-                 </tr>
-
-
-
-
-                 <?php                      
+                          <?php                      
                               }
                       }
                       else {
                         echo"<div class='alert alert-danger'>No tasks assigned</div>";
                       }
                       ?>
+
+              </div>
                </tbody>
           </table>
         </div>
@@ -89,7 +95,7 @@ if($result->num_rows>0){
                   <tr>
                   
                     <td>Identify the implementation team.</td>
-                    <td> <span class="label-red mx-auto status">deleted</span></td>
+                    <td> <span class="label-red mx-auto status">cancelled</span></td>
                     <td>@me</td>
                   </tr>
                   <tr>
@@ -138,6 +144,9 @@ if($result->num_rows>0){
             <div class="addnew-form">
               <input type="email" class="" placeholder="Assigned by" name="assignedby" aria-describedby="emailHelp">        
             </div>
+            <div class="addnew-form">
+              <textarea class="" id="message-text" placeholder="Description" name="description"></textarea>
+            </div>
              <div class="addnew-form">
               <button  type="submit" class="mx-auto button" name="submit">Add Task</button>
             </div>
@@ -166,6 +175,9 @@ if($result->num_rows>0){
             <div class="addnew-form">
               <input type="email" class="" placeholder="Assigned by" name="assignedby" aria-describedby="emailHelp">        
             </div>
+            <div class="addnew-form">
+              <textarea class="" id="message-text" placeholder="Description" name="description"></textarea>
+            </div>
              <div class="addnew-form">
               <button  type="submit" class="mx-auto button" name="submit">Edit Task</button>
             </div>
@@ -173,31 +185,31 @@ if($result->num_rows>0){
 			</div>
 		</div>
 	</div>
-
-    	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Delete Task</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-    
-
+  <script>
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+	
+	// Select/Deselect checkboxes
+	var checkbox = $('table tbody input[type="checkbox"]');
+	$("#selectAll").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;                        
+			});
+		} else{
+			checkbox.each(function(){
+				this.checked = false;                        
+			});
+		} 
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAll").prop("checked", false);
+		}
+	});
+});
+</script>
         <script src="https://kit.fontawesome.com/939695db0f.js" crossorigin="anonymous"></script>
 <script src="./js/bootstrap.min.js"></script>
 <!-- jQuery -->

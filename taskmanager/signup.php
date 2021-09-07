@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
  $result = mysqli_query($conn,$sql);
 
     if($result){   
-      header("location: taskmanager.php");
+      header("location: signin.html");
       exit();
       }
 

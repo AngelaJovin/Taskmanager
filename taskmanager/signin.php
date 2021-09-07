@@ -6,6 +6,7 @@ include('connect.php');
 	   {
 		$email = mysqli_real_escape_string($conn,$_POST['email']);
         $password = mysqli_real_escape_string($conn,$_POST['password']);
+		$Pass = md5($_POST['password']);
          
 		$sql= "select * from users where Email='$email' AND Password='$password'";
 		     
@@ -24,7 +25,7 @@ include('connect.php');
            }
 
 	    else{
-		   echo "<script>alert('Please enter correct data!')</script>". mysqli_error($con);
+		   echo "<script>alert('Please enter correct data!')</script>". mysqli_error($conn);
 		   exit();
 		   }
 	    }
