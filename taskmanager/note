@@ -1,0 +1,4 @@
+Note: We used PHP's mail() function to send email to user.
+ This function cannot send mails from localhost.
+ It can only do so using a server that is hosted on the internet.
+ However we can use a test mail application to simulate the sending of emails if you want to have a demo on your local system.

@@ -1,5 +1,11 @@
 <?php
       include('connect.php');
+ 
+  if (!isset($_SESSION['email'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: signin.html');
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +20,18 @@
         <title>taskmanager</title>
     </head>
     <body>
+      <!--  -->
+    <?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
+    <!--   -->
         <section>
             <div class="container">
               <div class="row justify-content-center align-items-center">
@@ -54,7 +72,8 @@ if($result->num_rows>0){
                    <td><?php echo $row['AssignedBy']; ?></td>
                    <td><a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 					   <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				   </td>
+  				   </td>
+             <td><button type="submit" class="mx-auto button3">Done</button></td>
                  </tr>
 
 
