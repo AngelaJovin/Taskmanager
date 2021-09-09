@@ -18,16 +18,24 @@ include('errors.php');
 		}
 
 		if (count($errors) == 0) {
-			$query = "SELECT * FROM users WHERE Email='$email' AND Password='$password'";
+			// $query = "SELECT * FROM users WHERE Email='$email' AND Password='$password'";
+						$query = "SELECT * FROM users WHERE Email='$email' AND Password='$Pass'";
+
 			$results = mysqli_query($conn, $query);
 			if (mysqli_num_rows($results) == 1) {
+				$row = mysqli_fetch_assoc($results);
 			  $_SESSION['email'] = $email;
-			  $_SESSION['password'] = $password;
-			  $_SESSION['success'] = "You are now logged in";
+			
+			  $_SESSION["priv"]=$row["Privilege"];
+
 			  header('location: taskmanager.php');
 			}else {
 				array_push($errors, "Wrong username/password combination");
+				header('location: signin.html');
 			}
+
 		}
+
+		
 	}
  ?>

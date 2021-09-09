@@ -4,6 +4,9 @@
   if (!isset($_SESSION['email'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: signin.html');
+  }else{
+    $priv=$_SESSION["priv"];
+    $emailOwner=$_SESSION["email"];
   }
 
 ?>
@@ -44,7 +47,9 @@
 <div class="row">
     <div class="col-md-4"><h2>You've got<span class="no-of-tasks"> 4</span> tasks</h2></div>
     <div class="col-md-4"><button type="submit" class="mx-auto button2" data-toggle="modal" data-target="#loginModal"><i class="fa fa-plus-square" aria-hidden="true"></i>Add New</button></div>
-    <div class="col-md-4"> <img src="images/logo.png" alt="responsive image" class="logo-on-tasks"></div>
+    <div class="col-md-4"> <img src="images/logo.png" alt="responsive image" class="logo-on-tasks"></div> 
+    
+    
     
 </div>
 <div class="row">
@@ -57,9 +62,23 @@
                 
             <?php                    
 
-$sql="SELECT  `Title`, `AssignedTo`, `AssignedBy` FROM `tasks` ";
+
+
+
+if($priv==0){
+  
+  // $sql="SELECT `Title`, `AssignedTo`, `AssignedBy` FROM `tasks` WHERE `Owner`=`$emailOwner` ";
+  $sql = "SELECT * FROM `tasks` WHERE Owner=\"$emailOwner\"";
+}
+if($priv==1){
+  $sql="SELECT  `Title`, `AssignedTo`, `AssignedBy` FROM `tasks` ";
+}
+
+
 
 $result=$conn->query($sql);
+// $result= mysqli_query($conn, $sql);  
+
 
 if($result->num_rows>0){
 

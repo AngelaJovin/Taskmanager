@@ -31,36 +31,16 @@ if(isset($_POST['submit']))
 
   if (count($errors) == 0) {
     
-  	$sql= "INSERT INTO users (Email,Password) 
-  			  VALUES( '$email', '$password')";
+  	// $sql= "INSERT INTO users (Email,Password) 
+  	// 		  VALUES( '$email', '$password')";
+    $sql= "INSERT INTO users (Email,Password) 
+    VALUES( '$email', '$Pass')";
   	mysqli_query($conn, $sql);
   	$_SESSION['email'] = $email;
+    $_SESSION["priv"]=0;
   	header('location: taskmanager.php');
   }
 }
 
-<?php
-
-if (isset($_POST['edit'])) {
-	$id = $_POST['id'];
-  $title =$_POST['title'];
-  $assignedto = $_POST['assignedto'];
-  $assignedby = $_POST['assignedby'];
-
-  $edit = "UPDATE tasks SET Title='$title', AssignedTo='$assignedto', AssignedBy='$assignedby' WHERE ID=$id";
-
-$edited =	mysqli_query($conn,$edit);
-
-if($edited){   
-  header("location: taskmanager.php");
-  exit();
-  }
-  
-  else{
-    echo"<script>alert('wrong code')";
-  }
-}
-
-?>
 
 ?>
