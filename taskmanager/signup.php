@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
   
   if ($user) { // if user exists
    
-    if ($user['email'] === $email) {
+    if ($user['Email'] === $email) {
       array_push($errors, "email already exists");
     }
   }
@@ -35,9 +35,32 @@ if(isset($_POST['submit']))
   			  VALUES( '$email', '$password')";
   	mysqli_query($conn, $sql);
   	$_SESSION['email'] = $email;
-  	$_SESSION['success'] = "You are now logged in";
   	header('location: taskmanager.php');
   }
 }
+
+<?php
+
+if (isset($_POST['edit'])) {
+	$id = $_POST['id'];
+  $title =$_POST['title'];
+  $assignedto = $_POST['assignedto'];
+  $assignedby = $_POST['assignedby'];
+
+  $edit = "UPDATE tasks SET Title='$title', AssignedTo='$assignedto', AssignedBy='$assignedby' WHERE ID=$id";
+
+$edited =	mysqli_query($conn,$edit);
+
+if($edited){   
+  header("location: taskmanager.php");
+  exit();
+  }
+  
+  else{
+    echo"<script>alert('wrong code')";
+  }
+}
+
+?>
 
 ?>

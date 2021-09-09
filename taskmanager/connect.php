@@ -16,7 +16,6 @@ $conn = new mysqli($servername,$uname ,$pword, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
 
 if (isset($_GET['Token'])) {
   $_SESSION['Token']=mysqli_real_escape_string($conn,$_GET['Token']);
@@ -74,6 +73,16 @@ if (isset($_POST['new_password'])) {
       header('location: taskmanager.php');
     }
   }
+}
+
+if (isset($_POST['edit'])) {
+	$id = $_POST['ID'];
+	$title = $_POST['title'];
+	$assignedto = $_POST['assignedto'];
+  $assignedby = $_POST['assignedby'];
+
+	mysqli_query($conn, "UPDATE tasks SET Title='$title', AssignedTo='$assignedto', AssignedBy='$assignedby' WHERE ID=$id");
+	header('location: taskmanager.php');
 }
 
 ?>

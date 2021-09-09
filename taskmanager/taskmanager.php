@@ -167,14 +167,17 @@ if($result->num_rows>0){
   </div>
 
   	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
+	<div id="editEmployeeModal" class="modal fade"  tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<form>
-        <div class="addnew-form">
+				<form action="addnew.php" method="POST">
+        <div class="addnew-form" >
               <button type="button" class="close btn-dark" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">x</span>
               </button>
+            </div>
+            <div class="addnew-form">
+            <input type="hidden" name="id" >
             </div>
             <div class="addnew-form">
               <input type="text" class="" placeholder="Title" name="title" aria-describedby="emailHelp" required>        
@@ -186,7 +189,7 @@ if($result->num_rows>0){
               <input type="email" class="" placeholder="Assigned by" name="assignedby" aria-describedby="emailHelp">        
             </div>
              <div class="addnew-form">
-              <button  type="submit" class="mx-auto button" name="submit">Edit Task</button>
+              <button  type="submit" class="mx-auto button" name="edit">Edit Task</button>
             </div>
 				</form>
 			</div>
@@ -208,7 +211,7 @@ if($result->num_rows>0){
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
+						<input type="submit" class="btn btn-danger" value="Delete" name="delete">
 					</div>
 				</form>
 			</div>
