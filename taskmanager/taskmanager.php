@@ -43,26 +43,7 @@
                 <div action="" class="card p-4 rounded addnew shadow">
 <div class="row">
 
-</div>
-<div class="row">
-    <div class="col-md-4"><h2>You've got<span class="no-of-tasks"> 4</span> tasks</h2></div>
-    <div class="col-md-4"><button type="submit" class="mx-auto button2" data-toggle="modal" data-target="#loginModal"><i class="fa fa-plus-square" aria-hidden="true"></i>Add New</button></div>
-    <div class="col-md-4"> <img src="images/logo.png" alt="responsive image" class="logo-on-tasks"></div> 
-    
-    
-    
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <p class="on-hold">On Hold</p>
-        <div class="table-responsive">
-        <table class="table">
-            <tbody>
-            <tr>             
-                
-            <?php                    
-
-
+<?php
 
 
 if($priv==0){
@@ -81,6 +62,38 @@ $result=$conn->query($sql);
 
 
 if($result->num_rows>0){
+  $task_count=$result->num_rows;
+
+?>
+
+</div>
+<div class="row">
+    <div class="col-md-4"><h2>You've got<span class="no-of-tasks">
+   <?php
+    echo $task_count;
+   ?>
+    
+  
+  
+  </span> tasks</h2></div>
+    <div class="col-md-4"><button type="submit" class="mx-auto button2" data-toggle="modal" data-target="#loginModal"><i class="fa fa-plus-square" aria-hidden="true"></i>Add New</button></div>
+    <div class="col-md-4"> <img src="images/logo.png" alt="responsive image" class="logo-on-tasks"></div> 
+    
+    
+    
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <p class="on-hold">On Hold</p>
+        <div class="table-responsive">
+        <table class="table">
+            <tbody>
+            <tr>             
+                
+            <?php                    
+
+
+
 
     while($row=$result->fetch_assoc()){
       extract($row);

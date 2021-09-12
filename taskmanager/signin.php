@@ -31,10 +31,19 @@ include('errors.php');
 			  header('location: taskmanager.php');
 			}else {
 				array_push($errors, "Wrong username/password combination");
-				header('location: signin.html');
+				?>
+				
+
+<?php
+ 
+ echo '<script>
+alert("Sorry incorrect email or password");
+window.location.href="signin.html";
+</script>';
+			// header('location: signin.html');
 			}
 
-		}
+		} 	
 
 		
 	}
